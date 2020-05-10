@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: berkeleyproject
+  labels:
+    name: berkeleyproject
+
+spec:
+  containers:
+    - name: berkeleyproject
+      imagePullPolicy: IfNotPresent
+      image: berkeleyproject_python:latest
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8000

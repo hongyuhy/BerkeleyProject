@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: berkeleyproject
+spec:
+  selector:
+    matchLabels:
+      app: berkeleyproject
+  replicas: 1 #  number of pods to spawn (Currently can only use 1 because they will not be using the same redis)
+  template:
+    metadata:
+      labels:
+        app: berkeleyproject
+    spec:
+      containers:
+        - name: berkeleyproject
+          imagePullPolicy: IfNotPresent
+          image: berkeleyproject_python:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8000

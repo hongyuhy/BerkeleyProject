@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: berkeleyproject-service
+  labels:
+    app: berkeleyproject
+spec:
+  selector:
+    app: berkeleyproject
+  ports:
+    - port: 8000
+      nodePort: 30000 # Fix the port to access application via service
+  type: NodePort
